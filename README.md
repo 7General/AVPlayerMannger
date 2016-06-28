@@ -2,7 +2,7 @@
 AVPlayer-录音，播放，录制的CAF格式转换成MP3格式播放，网络音乐播放，本地音乐播放，共3种情况
 
 
-github下载地址:https://github.com/7General/AVPlayerMannger
+
 最近在做聊天程序。单位没有采用已经封装好的第三方通讯。而是自己采用，自己写。发送文字、语音、图片这三个情况。
 
 
