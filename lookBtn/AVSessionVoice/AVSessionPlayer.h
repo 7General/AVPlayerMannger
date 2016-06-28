@@ -16,7 +16,7 @@
 
 @optional
 /**
- *  录音完成
+ *  录音完成todo...
  *
  *  @param AVPlayer  播放对象
  *  @param voicePath 录音文件路劲
@@ -48,11 +48,11 @@
 
 
 
-
 /**播放状态*/
 -(BOOL)playAudicState;
 /**检查能够录音*/
 -(BOOL)canRecord;
+
 
 /**录音开始*/
 -(void)recoderVoice;
@@ -60,8 +60,6 @@
 -(void)recoderVoiceEnd;
 /**删除录音文件*/
 -(void)deleteVoicRecord:(NSString * )pathName;
-
-
 
 
 /**开始播放*/

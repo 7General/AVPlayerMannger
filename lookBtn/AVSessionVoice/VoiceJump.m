@@ -21,7 +21,8 @@
 
 -(void)initView {
     
-    self.center = AVCurrentWindow.center;//CGPointMake(AVWidth * 0.5, AVHeight * 0.5);
+    self.center = AVCurrentWindow.center;
+    //CGPointMake(AVWidth * 0.5, AVHeight * 0.5);
     self.bounds = CGRectMake(0, 0, 160, 160);
     
     self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.2];

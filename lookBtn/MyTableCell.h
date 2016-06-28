@@ -15,6 +15,13 @@
 @protocol UITableViewCellDelegate <NSObject>
 
 @optional
+/**
+ *  点击播放语音
+ *
+ *  @param cell        cell
+ *  @param btn         点击的按钮
+ *  @param indexNumber 索引行号
+ */
 -(void)cell:(MyTableCell *)cell button:(UIButton *)btn withIndex:(NSInteger )indexNumber;
 
 @end
