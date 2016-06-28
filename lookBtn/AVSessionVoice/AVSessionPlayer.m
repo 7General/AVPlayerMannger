@@ -104,8 +104,8 @@
     
     
     [self deleteVoicRecord:mp3FileName];
+    /**开始转换*/
     @try {
-        
         int read, write;
         
         FILE *pcm = fopen ([self.playName cStringUsingEncoding : 1 ], "rb" );  //source 被 转换的音频文件位置
@@ -119,38 +119,23 @@
         else
             
         {
-            
-            fseek (pcm, 4 * 1024 , SEEK_CUR );                                   //skip file header
-            
+            //skip file header
+            fseek (pcm, 4 * 1024 , SEEK_CUR );
             FILE *mp3 = fopen ([mp3FileName cStringUsingEncoding : 1 ], "wb" );  //output 输出生成的 Mp3 文件位置
             const int PCM_SIZE = 8192 ;
-            
             const int MP3_SIZE = 8192 ;
-            
             short int pcm_buffer[PCM_SIZE* 2 ];
-            
             unsigned char mp3_buffer[MP3_SIZE];
-            
-            
-            
             lame_t lame = lame_init ();
             
             lame_set_num_channels (lame, 1 ); // 设置 1 为单通道，默认为 2 双通道
             
             lame_set_in_samplerate (lame, 8000.0 ); //11025.0
-            
             //lame_set_VBR(lame, vbr_default);
-            
             lame_set_brate (lame, 8 );
-            
             lame_set_mode (lame, 3 );
-            
             lame_set_quality (lame, 2 ); /* 2=high 5 = medium 7=low 音 质 */
-            
             lame_init_params (lame);
-            
-            
-            
             do {
                 
                 read = fread (pcm_buffer, 2 * sizeof ( short int ), PCM_SIZE, pcm);
@@ -161,9 +146,7 @@
                 fwrite (mp3_buffer, write, 1 , mp3);
             } while (read != 0 );
             lame_close (lame);
-            
             fclose (mp3);
-            
             fclose (pcm);
         }
     }
@@ -175,6 +158,7 @@
     @finally {
         NSLog(@"-----转换MP3成功！！！");
         self.mp3FilePath = mp3FileName;
+        /**播放mMP3音乐*/
         [self playAudioWithContentsOfURL:self.mp3FilePath];
     }
 }
